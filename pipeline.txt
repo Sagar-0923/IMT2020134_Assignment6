@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+        stages {
+            stage('Clone Git') {
+                steps {
+                    git 'https://github.com/Sagar-0923/IMT2020134_Assignment6.git'
+                }
+            }
+            stage('Build Code') {
+                steps {
+                    sh "/usr/bin/python3 prime.py"
+                }
+            }
+            stage('Test Code') {
+                steps {
+                    sh "/usr/bin/python3 test.py"
+                }
+            }
+            stage('Deploying') {
+                steps{
+                    echo "This step is Deploying"
+                }
+            }
+        }
+}
